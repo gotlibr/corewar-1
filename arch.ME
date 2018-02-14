@@ -1,0 +1,23 @@
+####### AT START UP ######
+
+### Flags
+
+-dump n
+
+Make n ammount of cycles, print memory to stdout in the format of 32 octets per line in 16-base.
+
+-n n
+must be followed by someplayer.cor
+Specifies manualy player's number which must be written to r1.
+
+if given more than CHAMP_MAX_SIZE display error 
+
+###### PRELOAD ######
+
+At preload phase each player initiate a process. VM gives player's id to initial processes r1.
+
+When we set up a player on the map, we must give its process initial location which to be written to Program Counter.
+
+entry points of players must be spread up evenly.
+
+
