@@ -1,9 +1,35 @@
 # Data structures:
 
+Class GameEnvironment
+{
+	queue<class Process>	moveQueue
+	list<class Player>	players
+	unsigned char		[MEM_SIZE]
+}
+
+Class GameManager
+{
+	int		cyclesToDie = CYCLE_TO_DIE
+	int		deltaCycles = CYCLE_DELTA
+	int		maxChecks = MAX_CHECKS
+	int		counterAlive = 0
+	const int	AliveThreshold = NBR_LIVE
+	class Player	*last_live
+}
+
 Class Player
 {
-	list<class Process>	processes
+	string			description
 	string			name
-	int			id
-	
+	int			id	
+}
+
+Class Process
+{
+	int		playerId	
+	unsigned char	*memory // has to be malloced,
+					otherwise can cause stack overflow
+	unsigned char	PC - pointer to next command
+	bool		carry
+	unsigned int	liveExecutions
 }
