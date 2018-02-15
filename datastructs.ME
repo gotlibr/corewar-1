@@ -27,8 +27,7 @@ Class Player
 Class Process
 {
 	int		playerId	
-	unsigned char	*memory // has to be malloced,
-					otherwise can cause stack overflow
+	unsigned char	memory[REG NUMBER]
 	unsigned char	PC - pointer to next command
 	bool		carry
 	unsigned int	liveExecutions
