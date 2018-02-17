@@ -1,8 +1,35 @@
+#include <tclDecls.h>
 #include "environment.h"
 #include "process.h"
 #include "../libft/classes_lib/new.h"
 #include "../libft/classes_lib/queue.h"
 #include "../libft/classes_lib/linked_list.h"
+
+void make_move(t_process *curr_process, t_environment *env, void *new_queue)
+{
+	t_command_cache *cache;
+
+	cache = &curr_process->command_cache;
+	if (cache->cycles_left > 0)
+	{
+		cache->cycles_left--;
+		return ;
+	}
+	else if (cache->cycles_left == 0)
+	{
+		process_operation(curr_process, env, new_queue);
+		return ;
+	}
+	cache->op_code = get_op_code(curr_process->program_counter);
+	if (cache->op_code < 0)
+	{
+		curr_process->program_counter++;
+		return ;
+	}
+	else
+		get_args(cache->op_code, curr_process->program_counter + 1);
+	cycles_left = cycles_to_perform(cache->op_code);
+}
 
 void	make_turn(t_environment *environment)
 {
@@ -10,16 +37,15 @@ void	make_turn(t_environment *environment)
 	void *temp_queue;
 	t_process *current_process;
 
-	current_queue = environment->current_queue;
+	current_queue = environment->processes_queue;
 	temp_queue = new(g_queue);
-	void *list = new(g_list, queue);
 
 	while(!queue_is_empty(current_queue))
 	{
 		current_process = dequeue(current_queue);
-		make_move(current_process, environment);
+		make_move(current_process, environment, temp_queue);
 		enqueue(temp_queue, current_process);
 	}
 	delete(current_queue);
-	environment->current_queue = temp_queue;*/
+	environment->processes_queue = temp_queue;
 }
