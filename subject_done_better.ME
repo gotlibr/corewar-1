@@ -35,8 +35,7 @@ The game stops when all processes are dead.
 
 Process is to be killed if it has not executed 'live' command since last "check if alive" which is executed every CYCLE_TO_DIE cycles.
 
-if live command has been execudet more than NBR_LIVE, we decrease CYCLE_TO_DIE by C
-YCLE_DELTA
+if live command has been executed more than NBR_LIVE, we decrease CYCLE_TO_DIE by CYCLE_DELTA
 
 If CYCLE_TO_DIE wasn’t decreased since MAX_CHECKS checkups, decrease it.
 
