@@ -6,8 +6,13 @@ int 	main(int argc, char **param)
 
 	void	make_classes(void);
 
-	if (init_game(param, &env))
+	if (!init_game(param, &env))
 		ft_printf_last_error();
 	vm_loop(&env);
 	print_winner(&env);
+}
+
+int 	init_game(char **param, t_environment env)
+{
+
 }

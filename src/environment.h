@@ -19,3 +19,4 @@ struct  s_player
 	int							id;
 	unsigned long int			last_live_cycle;
 };
+int 	init_game(char **param, t_environment env);
