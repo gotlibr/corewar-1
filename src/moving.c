@@ -4,6 +4,16 @@
 #include "../libft/classes_lib/new.h"
 #include "../libft/classes_lib/queue.h"
 #include "../libft/classes_lib/linked_list.h"
+#include "../libft/ft_printf/libftprintf/libft.h"
+
+unsigned char get_op_code(unsigned char *pc)
+{
+	unsigned int op_code;
+
+	if (ft_isdigit(*pc))
+		op_code = *pc - 48;
+	return 0;
+}
 
 void make_move(t_process *curr_process, t_environment *env, void *new_queue)
 {
