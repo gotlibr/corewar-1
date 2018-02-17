@@ -1,4 +1,5 @@
 #include "environment.h"
+#include "loop_manager.h"
 
 void	vm_loop(t_environment *environment)
 {
@@ -7,6 +8,7 @@ void	vm_loop(t_environment *environment)
 	running = 1;
 	while (running)
 	{
+		print_current_state(environment);
 		make_turn(environment);
 		check_live_executions(environment);
 		if (wasnt_decreased_since_last(environment))

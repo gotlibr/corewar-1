@@ -5,7 +5,7 @@
 typedef struct		s_process
 {
 	const int		player_id;
-	unsigned char	memory[REG_NUMBER];
+	unsigned char	*memory;
 	unsigned char	*program_counter;
 	int 			carry;
 	unsigned int	live_executions;
