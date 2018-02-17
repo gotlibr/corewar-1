@@ -2,13 +2,19 @@
 
 #include "op.h"
 
+typedef struct			s_command_cache
+{
+	int					cycles_left;
+	unsigned char		op_code;
+	unsigned char		args[3];
+}						t_command_cache;
 
 typedef struct			s_process
 {
 	char				player_id;
-	unsigned char		*memory;
+	unsigned char		memory[REG_NUMBER];
 	unsigned char		*program_counter;
 	int					carry;
 	unsigned int		live_executions;
-	struct s_process	*next;
+	t_command_cache		command_cache;
 }						t_process;
