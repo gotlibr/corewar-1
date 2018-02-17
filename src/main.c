@@ -12,7 +12,23 @@ int 	main(int argc, char **param)
 	print_winner(&env);
 }
 
-int 	init_game(char **param, t_environment env)
+t_player *new_player(char *file)
+{
+	t_player *player;
+	int fd;
+
+	fd = open(file, O_RDONLY);
+	return (player);
+}
+
+int read_to_tmp(char **tmp, char *param)
 {
 
+}
+
+int 	init_game(char **param, t_environment *env)
+{
+	char *tmp;
+	if (!read_to_tmp(&tmp, param[1]))
+		ft_printf_last_error();
 }

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <fcntl.h>
 typedef struct s_environment	t_environment;
 typedef struct s_player			t_player;
 
@@ -19,5 +19,6 @@ struct  s_player
 	char						*description;
 	int							id;
 	unsigned long int			last_live_cycle;
+	long						current_lives;
 };
-int 	init_game(char **param, t_environment env);
+int 	init_game(char **param, t_environment *env);
