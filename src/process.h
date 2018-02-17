@@ -11,4 +11,3 @@ typedef struct		s_process
 	unsigned int	live_executions;
 }					t_process;
 
-§

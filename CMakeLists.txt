@@ -3,8 +3,18 @@ project(corewar C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(corewar
-        main.c
+set(SOURCE_FILES
         src/process.h
         src/op.h
-        src/main.c src/vm_loop.c src/environment.h)
+        src/main.c
+        src/vm_loop.c
+        src/environment.h
+        src/moving.c)
+
+add_subdirectory(libft)
+
+include_directories(libft/includes)
+
+add_executable(corewar ${SOURCE_FILES})
+
+target_link_libraries(corewar libft)
