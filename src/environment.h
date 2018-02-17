@@ -10,6 +10,7 @@ struct s_environment
 	int 						cyclesToDie;
 	unsigned char				*map;
 	int							counterAlive;
+	int							last_check;
 };
 
 struct  s_player

@@ -1,6 +1,8 @@
 #include "environment.h"
 #include "loop_manager.h"
 
+
+
 void	vm_loop(t_environment *environment)
 {
 	int running;
@@ -10,9 +12,10 @@ void	vm_loop(t_environment *environment)
 	{
 		print_current_state(environment);
 		make_turn(environment);
-		check_live_executions(environment);
+		if (is_bigger_delta_cycle(environment))
+			update_live_executions(environment);
 		if (wasnt_decreased_since_last(environment))
-			decrease_cycles_to_die(environment);
+			update_live_executions(environment);
 		if (processes_are_dead(environment))
 			running = 0;
 	}
