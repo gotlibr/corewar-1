@@ -31,7 +31,7 @@ void	log_state(t_environment *environment)
 	t_llist *processes;
 
 	processes = (t_llist *)(((t_queue *)(environment->processes_queue))->front);
-	fd = open("log.txt", O_RDONLY);
+	fd = open("log.txt", O_RDWR);
 	ft_printf("<players>");
 	while (temp)
 	{
@@ -57,7 +57,7 @@ void	log_event(t_process *process, unsigned char *destination_adr, t_environment
 	int i;
 
 	i = 0;
-	fd = open("log.txt", O_RDONLY);
+	fd = open("log.txt", O_RDWR);
 	if ((int)(destination_adr) <= 16 && (int)(destination_adr) > 0)
 		param_num = op_tab[(int)(destination_adr)].args_num;
 	else
