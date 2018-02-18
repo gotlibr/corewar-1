@@ -2,34 +2,27 @@
 
 Class GameEnvironment
 {
-	stack<class Process>	moveStack
+	queue<class Process>	move_queue
 	list<class Player>		players
 	unsigned char			map[MEM_SIZE]
-}
-
-Class GameManager
-{
-	int				cyclesToDie = CYCLE_TO_DIE
-	int				deltaCycles = CYCLE_DELTA
-	int				maxChecks = MAX_CHECKS
-	int				counterAlive = 0
-	const int		AliveThreshold = NBR_LIVE
-	class Player	*last_live
+	int				        cyclesToDie = CYCLE_TO_DIE
+    int				        counterAlive = 0
 }
 
 Class Player
 {
 	string			description
 	string			name
-	int				id	
+	int				id
+	unsigned long   last_live_cycle
 }
 
 Class Process
 {
-	int				player_id
+	class Player    player
 	unsigned char	memory[REG_NUMBER]
 	unsigned char	PC - pointer to next command
 	bool			carry
 	unsigned int	live_executions
-	unsigned int    cycles_left;
+	unsigned int    cycles_left
 }

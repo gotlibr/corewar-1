@@ -8,11 +8,17 @@
 
 unsigned char get_op_code(unsigned char *pc)
 {
-	unsigned int op_code;
+	unsigned char op_code;
 
 	if (ft_isdigit(*pc))
 		op_code = *pc - 48;
-	return 0;
+	else if (*pc >= 'A' && *pc <= 'F')
+		op_code = *pc - 55;
+	else if (*pc >= 'a' && *pc <= 'f')
+		op_code = *pc - 87;
+	else
+		op_code = -1;
+	return (op_code);
 }
 
 void make_move(t_process *curr_process, t_environment *env, void *new_queue)
@@ -38,7 +44,7 @@ void make_move(t_process *curr_process, t_environment *env, void *new_queue)
 	}
 	else
 		get_args(cache->op_code, curr_process->program_counter + 1);
-	cycles_left = cycles_to_perform(cache->op_code);
+	cache->cycles_left = cycles_to_perform(cache->op_code);
 }
 
 void	make_turn(t_environment *environment)
