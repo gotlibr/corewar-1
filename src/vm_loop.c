@@ -10,7 +10,7 @@ void	vm_loop(t_environment *environment)
 	running = 1;
 	while (running)
 	{
-		print_current_state(environment);
+		//print_current_state(environment);
 		make_turn(environment);
 		if (is_bigger_delta_cycle(environment))
 			update_live_executions(environment);

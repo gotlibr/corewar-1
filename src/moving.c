@@ -1,10 +1,12 @@
 #include <tclDecls.h>
+#include <ft_printf.h>
 #include "environment.h"
 #include "process.h"
 #include "../libft/classes_lib/new.h"
 #include "../libft/classes_lib/queue.h"
 #include "../libft/classes_lib/linked_list.h"
 #include "../libft/ft_printf/libftprintf/libft.h"
+#include "loop_manager.h"
 
 unsigned char get_op_code(unsigned char *pc)
 {
@@ -19,6 +21,36 @@ unsigned char get_op_code(unsigned char *pc)
 	else
 		op_code = -1;
 	return (op_code);
+}
+
+void get_args(unsigned char *map, t_command_cache *pCache, unsigned char *counter)
+{
+	if (map - counter < MEM_SIZE - 10)
+		ft_memcpy(pCache->args, counter, 10);
+	else
+		ft_printf("Memory is on the edge.Cant copy. Write me finally\n");
+}
+
+int cycles_to_perform(unsigned char code)
+{
+	int res;
+	res = (code == 1) ? 10 : 0;
+	res = (code == 2) ? 5 : 0;
+	res = (code == 3) ? 5 : 0;
+	res = (code == 4) ? 10 : 0;
+	res = (code == 5) ? 10 : 0;
+	res = (code == 6) ? 6 : 0;
+	res = (code == 7) ? 6 : 0;
+	res = (code == 8) ? 6 : 0;
+	res = (code == 9) ? 20 : 0;
+	res = (code == 10) ? 25 : 0;
+	res = (code == 11) ? 25 : 0;
+	res = (code == 12) ? 800 : 0;
+	res = (code == 13) ? 10 : 0;
+	res = (code == 14) ? 50 : 0;
+	res = (code == 15) ? 1000 : 0;
+	res = (code == 16) ? 2 : 0;
+	return (res);
 }
 
 void make_move(t_process *curr_process, t_environment *env, void *new_queue)
@@ -37,13 +69,15 @@ void make_move(t_process *curr_process, t_environment *env, void *new_queue)
 		return ;
 	}
 	cache->op_code = get_op_code(curr_process->program_counter);
-	if (cache->op_code < 0)
+	if (cache->op_code == 0)
 	{
 		curr_process->program_counter++;
 		return ;
 	}
 	else
-		get_args(cache->op_code, curr_process->program_counter + 1);
+		get_args(env->map, cache, curr_process->program_counter);
+	// TODO if check if args are valid for the current op_code
+
 	cache->cycles_left = cycles_to_perform(cache->op_code);
 }
 
