@@ -9,7 +9,10 @@ set(SOURCE_FILES
         src/main.c
         src/vm_loop.c
         src/environment.h
-        src/moving.c src/check_live_exec.c src/loop_manager.h)
+        src/moving.c
+        src/check_live_exec.c
+        src/loop_manager.h
+        src/log.c)
 
 add_subdirectory(libft)
 
