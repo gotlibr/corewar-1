@@ -6,7 +6,7 @@ typedef struct			s_command_cache
 {
 	int					cycles_left;
 	unsigned char		op_code;
-	unsigned char		args[3];
+	unsigned char		args[10];
 }						t_command_cache;
 
 typedef struct			s_process
