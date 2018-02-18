@@ -2,8 +2,7 @@
 #include <zconf.h>
 #include "environment.h"
 #include "../libft/ft_printf/libftprintf/libft.h"
-#include "../libft/get_next_line/get_next_line.h"
-#include "../libft/ft_printf/ft_printf/ft_printf.h"
+#include "../libft/classes_lib/classes_lib.h"
 
 
 const char *hex_convert_pair_to_alph(char *tmp)
@@ -97,11 +96,9 @@ int 	main(int argc, char **param)
 {
 	static t_environment env;
 
-	void	make_classes(void);
-
-	if (!init_game(param, &env))
-		ft_printf_last_error();
+	make_classes();
+//	if (!init_game(param, &env))
+//		ft_printf_last_error();
 	vm_loop(&env);
-	print_winner(&env);
-	return (1);
+	//print_winner(&env);
 }

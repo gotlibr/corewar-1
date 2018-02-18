@@ -56,3 +56,20 @@ int				ft_printf(const char *format, ...)
 	va_end(ap);
 	return ((int)size);
 }
+
+int				ft_printf_fd(const char *format, ...)
+{
+	va_list		ap;
+	char		*res;
+	size_t		size;
+	int 		fd;
+
+	res = NULL;
+	va_start(ap, format);
+	fd = va_arg(ap, int);
+	size = process_result(format, ap, &res);
+	write(fd, res, size);
+	free(res);
+	va_end(ap);
+	return ((int)size);
+}

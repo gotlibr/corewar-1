@@ -5,7 +5,7 @@
 void 	update_live_executions(t_environment *env)
 {
 	if (env->cyclesToDie > CYCLE_DELTA)
-		env->cyclesToDie -= CYCLE_DELTA
+		env->cyclesToDie -= CYCLE_DELTA;
 	else
 		env->cyclesToDie = 0;
 }

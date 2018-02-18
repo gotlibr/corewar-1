@@ -59,5 +59,6 @@ t_format		*parse_modifiers(char *mods, t_format *current);
 size_t			apply_format(const char **format, char **res, va_list ap);
 char			*process_format(t_format *current, va_list ap);
 char			*apply_flags(t_format *current, char *src);
+int				ft_printf_fd(const char *format, ...);
 
 #endif
